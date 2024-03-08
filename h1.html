@@ -1,0 +1,151 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>House rate prediction</title>
+  <link rel="stylesheet" type="text/css" href="h2.css">
+</head>
+
+<body>
+  <div class="login-root">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+      <div class="loginbackground box-background--white padding-top--64">
+        <div class="loginbackground-gridContainer">
+          <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+            <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+            </div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+            <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
+            <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+            <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+            <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+            <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+            <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+            <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+            <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+        <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+          <h1>House rate prediction</h1>
+        </div>
+        <div class="formbg-outer">
+          <div class="formbg">
+            <div class="formbg-inner padding-horizontal--48">
+              <span class="padding-bottom--15">Select your features</span>
+              <form id="stripe-login">
+                <div class="container">
+                  <div class="field padding-bottom--24">
+                    <label for="Location">Location</label>
+                    <select name="Location" id="Location">
+                      <option value="newdelhi">newdelhi</option>
+                      <option value="bangalore">bangalore</option>
+                      <option value="kolkata">kolkata</option>
+                      <option value="gurgoan">gurgoan</option>
+                      <option value="ahemdabad">ahemdabad</option>
+                      <option value="surat">surat</option>
+                      <option value="mumbai">mumbai</option>
+                      <option value="hyderabad">hyderabad</option>
+                      <option value="navsari">navsari</option>
+                      <option value="jaipur">jaipur</option>
+                      <option value="vadodara">vadodara</option>
+                      <option value="greater noida">greater noida</option>
+                      <option value="kochi">kochi</option>
+                      <option value="goa">goa</option>
+                      <option value="patna">patna</option>
+                      <option value="lucknow">lucknow</option>
+                    </select>
+                  </div>
+                  <div class="field padding-bottom--24">
+                    <div class="grid--50-50">
+                      <label for="BHK">BHK</label>
+                    </div>
+                    <input type="number" min="1" max="4" name="BHK">
+                  </div>
+                </div>
+                <div class="container">
+                <div class="field padding-bottom--24">
+                    <label for="Floor">Floor</label>
+                    <input type="number" min="1" max="80" name="Floor">
+                  </div>
+                  <div class="field padding-bottom--24">
+                    <label for="Furnishing">Furnishing</label>
+                    <select name="Furnishing" id="Furnishing">
+                      <option value="Furnished">Furnished</option>
+                      <option value="UnFurnished">UnFurnished</option>
+                      <option value="SemiFurnished">SemiFurnished</option>
+                    </select>
+                  </div>
+                  </div>
+                  <div class="container">
+                  <div class="field padding-bottom--24">
+                    <label for="Facing">Facing</label>
+                    <select name="Facing" id="Facing">
+                      <option value="East">East</option>
+                      <option value="West">West</option>
+                      <option value="North">North</option>
+                      <option value="South">South</option>
+                    </select>
+                  </div>
+                  <div class="field padding-bottom--24">
+                    <label for="Bathroom">Bathroom</label>
+                    <input type="number" min="0" max="10" name="Bathroom">
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="field padding-bottom--24">
+                    <label for="Balcony">Balcony</label>
+                    <input type="number" min="0" max="6" name="Balcony">
+                  </div>
+                  <div class="field padding-bottom--24">
+                    <label for="Car Parking	">Car Parking</label>
+                    <input type="number"  min="0" max="5" name="Car Parking">
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="field padding-bottom--24">
+                    <label for="Super Area">Super Area</label>
+                    <input type="number" min="100" max="3000" name="Balcony">
+                  </div>
+                  <div class="field padding-bottom--24">
+                    <label for="Carpet Area	">Carpet Area</label>
+                    <input type="number"  min="100" max="3000" name="Car Parking">
+                  </div>
+                </div>
+                <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
+                 <h4>Get your price</h4>
+                </div>
+                <div class="field padding-bottom--24">
+                  <input type="submit" name="submit" value="Predict">
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="footer-link padding-top--24">
+            <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+              <span><a href="#">@ kevin & krish</a></span>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
