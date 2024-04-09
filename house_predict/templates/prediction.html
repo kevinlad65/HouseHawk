@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Page</title>
+    <script src="/static/predict.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        #prediction-result {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+            color: #007bff;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <div id="prediction-result">
+            Predicted Amount: <span id="predicted-amount">Loading...</span>
+        </div>
+
+        <!-- Optional: Add a button to go back to the home page -->
+        <a href="{% url 'home' %}">Go back to Home</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("prediction-form");
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                // Gather form data
+                const formData = new FormData(form);
+                const data = {};
+                formData.forEach(function(value, key) {
+                    data[key] = value;
+                });
+
+                // Get CSRF token from the form
+                const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
+                // Include CSRF token in request headers
+                fetch("{% url 'predict' %}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": csrfToken  // Include CSRF token in the headers
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Update UI with predicted amount
+                    const predictedAmount = data.predicted_amount;
+                    const resultElement = document.getElementById("predicted-amount");
+                    resultElement.innerText = predictedAmount;
+                })
+                .catch(error => console.error("Error:", error));
+            });
+        });
+    </script>
+</body>
+</html>
